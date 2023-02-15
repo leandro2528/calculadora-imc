@@ -1,21 +1,24 @@
 function start() {
     var btnCalculator = document.querySelector('#btnCalculator');
-    btnCalculator.addEventListener('click', handleButtonCalculator);
+    btnCalculator.addEventListener('click', handlebuttonClick);
 
     var inputWeight = document.querySelector('#input-weight');
     var inputHeight = document.querySelector('#input-height');
 
-    inputWeight.addEventListener('input', handleButtonCalculator);
-    inputHeight.addEventListener('input', handleButtonCalculator);
+    inputWeight.focus();
 
-    handleButtonCalculator();
+    inputWeight.addEventListener('input', handlebuttonClick);
+    inputHeight.addEventListener('input', handlebuttonClick);
+
+    handlebuttonClick();
+
 }
 
 function calculatorImc(weight, height) {
     return weight / (height * height);
 }
 
-function handleButtonCalculator() {
+function handlebuttonClick() {
     var inputWeight = document.querySelector('#input-weight').value;
     var inputHeight = document.querySelector('#input-height').value;
 
@@ -23,9 +26,7 @@ function handleButtonCalculator() {
 
     var imc = calculatorImc(inputWeight, inputHeight);
 
-    imcResult.textContent = imc.toFixed(2).replace('.', ',');
-
+    imcResult.textContent = "O IMC desses dados são " +imc.toFixed(2).replace('.', ',');
 }
 
 start();
-
